@@ -5,7 +5,7 @@
 	<Type>Automation</Type>
 	<Author>RGE</Author>
 	<CheckSets>FALSE</CheckSets>
-	<Folder></Folder>
+	<Folder>GQI/Operators</Folder>
 
 	<Protocols>
 	</Protocols>

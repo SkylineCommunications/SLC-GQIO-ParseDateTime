@@ -1,6 +1,6 @@
-using Skyline.DataMiner.Analytics.GenericInterface;
 using System;
 using System.Globalization;
+using Skyline.DataMiner.Analytics.GenericInterface;
 
 [GQIMetaData(Name = "Parse date/time")]
 public sealed class DateTimeParser : IGQIColumnOperator, IGQIRowOperator, IGQIInputArguments
@@ -80,7 +80,8 @@ public sealed class DateTimeParser : IGQIColumnOperator, IGQIRowOperator, IGQIIn
 
     public void HandleRow(GQIEditableRow row)
     {
-        var stringValue = row.GetValue(_stringColumn);
+        if (!row.TryGetValue(_stringColumn, out var stringValue))
+            return;
 
         if (!DateTime.TryParseExact(stringValue, _format, _culture, _dateTimeStyles, out var dateTimeValue))
             return;
